@@ -1,0 +1,20 @@
+#!/bin/bash
+
+str="$(curl --silent wttr.in/Philadelphia?format="%t" | grep -m 1 °F | sed 's/[^0-9]*//g')"
+
+tmp="$(echo $str)"
+
+temp="$(echo $((tmp + 1 - 1)))"
+
+echo "The temperature outside is: $temp °F"
+
+if [ $temp -ge 83 ]; then
+	curl -X POST --data-urlencode "payload={\"channel\": \"#final-project\", \"username\": \"I'm Sweating, Dude!\", \"text\": \"$temp °F - It's hot outside, stay cool and have an icecream!\", \"icon_url\": \"https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/emojione/178/overheated-face_1f975.png\"}" https://hooks.slack.com/services/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
+
+elif [ "$temp" -lt 83 ] || [ "$temp" -ge 45 ]; then
+	curl -X POST --data-urlencode "payload={\"channel\": \"#final-project\", \"username\": \"It's so soothing outside!\", \"text\": \"$temp °F - You should definitely go out today if it's not raining!\", \"icon_url\": \"https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/158/smiling-face-with-open-mouth-and-smiling-eyes_1f604.png\"}" https://hooks.slack.com/services/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
+
+else
+	curl -X POST --data-urlencode "payload={\"channel\": \"#final-project\", \"username\": \"It's Freezing outside, Bro!\", \"text\": \"$temp °F - It's too cold, make sure to layer up!\", \"icon_url\": \"https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/google/146/freezing-face_1f976.png\"}" https://hooks.slack.com/services/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
+
+fi

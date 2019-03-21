@@ -1,0 +1,4 @@
+#Makefile
+
+script : temperature
+	./temperature

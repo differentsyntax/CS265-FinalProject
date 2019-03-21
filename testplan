@@ -1,0 +1,9 @@
+We can check easily check at Google what temperature it is outside and compare accordingly.In order for the script to be functioning correctly, the following should be true:
+
+1. For temperatures >= 83 F, the message on slack channel should suggest that it's hot outside
+
+2. For temperature range 45 F to 82 F, the message on the slack channel should suggest that it is a nice weather to go out unless it is raining
+
+3. For temperatures < 45 F, the message on the slack channel should suggest that it is cold outside
+
+Apart from this, the message on the channel should come immediately along with its special hot, fine or cold emoji next to it.
